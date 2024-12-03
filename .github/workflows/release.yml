@@ -39,6 +39,7 @@ jobs:
           distribution: goreleaser
           version: "~> v2"
           args: release --clean --snapshot
+          workdir: sing-box
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ github.event.inputs.version }}

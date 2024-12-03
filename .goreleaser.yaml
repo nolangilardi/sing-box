@@ -44,4 +44,4 @@ checksum:
 signs:
   - artifacts: checksum
 snapshot:
-  name_template: '{{ .ProjectName }}-{{ .Env.VERSION }}'
+  version_template: '{{ .ProjectName }}-{{ .Env.VERSION }}'

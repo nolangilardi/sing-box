@@ -1,9 +1,11 @@
 name: goreleaser
 
 on:
-  push:
-    tags:
-      - '*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release'
+        required: true
 
 permissions:
   contents: write
@@ -36,7 +38,7 @@ jobs:
         with:
           distribution: goreleaser
           version: "~> v2"
-          args: release --clean
+          args: release --clean --snapshot
           workdir: sing-box
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

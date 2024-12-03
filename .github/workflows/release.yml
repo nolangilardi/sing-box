@@ -45,4 +45,4 @@ jobs:
           VERSION: ${{ github.event.inputs.version }}
       - name: Upload release
         run: |
-          gh release create ${{ github.event.inputs.version }} sing-box/dist/* --title ${{ github.event.inputs.version }} --notes-file sing-box/dist/checksum.txt
+          gh release create ${{ github.event.inputs.version }} sing-box/dist/{*.tar.gz,checksum.txt} --title ${{ github.event.inputs.version }} --notes-file sing-box/dist/checksum.txt

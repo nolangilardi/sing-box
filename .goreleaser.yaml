@@ -1,3 +1,4 @@
+version: 2
 project_name: sing-box
 builds:
   - id: main
@@ -42,14 +43,5 @@ checksum:
   name_template: '{{ .ProjectName }}-{{ .Version }}.checksum'
 signs:
   - artifacts: checksum
-release:
-  github:
-    owner: nolangilardi
-    name: sing-box
-  draft: true
-  prerelease: auto
-  mode: replace
-  make_latest: true
-  ids:
-    - archive
-  skip_upload: false
+snapshot:
+  name_template: '{{ .ProjectName }}-{{ .Env.VERSION }}'

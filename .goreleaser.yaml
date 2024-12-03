@@ -43,5 +43,10 @@ checksum:
   name_template: '{{ .ProjectName }}-{{ .Version }}.checksum'
 signs:
   - artifacts: checksum
-snapshot:
-  version_template: '{{ .ProjectName }}-{{ .Env.VERSION }}'
+release:
+  github:
+    owner: nolangilardi
+    name: sing-box
+  mode: replace
+  draft: true
+  skip_upload: false

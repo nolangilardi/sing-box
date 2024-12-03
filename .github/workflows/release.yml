@@ -1,11 +1,9 @@
 name: goreleaser
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version to release'
-        required: true
+  push:
+    tags:
+      - '*'
 
 permissions:
   contents: write
@@ -32,13 +30,13 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: stable
+          go-version-file: sing-box/go.mod
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
           version: "~> v2"
-          args: release --clean --snapshot
+          args: release --clean
           workdir: sing-box
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

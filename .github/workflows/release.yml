@@ -1,9 +1,11 @@
 name: goreleaser
 
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release'
+        required: true
 
 permissions:
   contents: write
@@ -23,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SagerNet/sing-box
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.event.inputs.version }}
           path: sing-box
           fetch-depth: 1
       - name: Override goreleaser config
